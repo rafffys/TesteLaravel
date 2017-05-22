@@ -14,4 +14,13 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         //
     ];
+
+    protected function tokensMatch($request)
+    {
+    	if ($request->wantsJSON())
+    	{
+    		return true;
+    	}
+    	return parent::tokensMatch($request);
+    }
 }
