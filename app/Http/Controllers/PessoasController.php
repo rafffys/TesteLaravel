@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\PessoaRequest;
 use App\Pessoa;
 
 class PessoasController extends Controller
@@ -12,7 +12,7 @@ class PessoasController extends Controller
     	return Pessoa::All();
     }
 
-    public function store(Request $request)
+    public function store(PessoaRequest $request)
     {
     	return Pessoa::create($request->all());
     }
@@ -22,7 +22,7 @@ class PessoasController extends Controller
     	return $pessoa;
     }
 
-    public function update(Request $request,Pessoa $pessoa)
+    public function update(PessoaRequest $request,Pessoa $pessoa)
     {
     	$pessoa->update($request->all());
     	return $pessoa;
