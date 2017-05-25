@@ -17,5 +17,6 @@ Route::get('/', function () {
 
 Route::group(['middleware'=>['web','api']],function() {
 	Route::resource('pessoas','PessoasController');
+	Route::resource('equipes','EquipesController');
 });
 
