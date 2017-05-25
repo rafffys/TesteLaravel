@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['middleware'=>['web','api']],function() {
+	Route::resource('pessoas','PessoasController');
+});
+
