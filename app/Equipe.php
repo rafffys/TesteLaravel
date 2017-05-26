@@ -11,6 +11,6 @@ class Equipe extends Model
 
     public function pessoas()
     {
-    	return $this->hasMany('App\Pessoa');
+    	return $this->hasMany('App\Pessoa','idequipe');
     }
 }
