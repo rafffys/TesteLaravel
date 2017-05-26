@@ -5,6 +5,7 @@
 		<th>Edit</th>
 		<th>Delete</th>
 		<th>Nome</th>
+		<th>Equipe</th>
 	</tr>
 	@foreach ($pessoas as $pessoa)
 		<tr>
@@ -15,6 +16,7 @@
 				{!! Form::close() !!}
 			</td>
 			<td>{!! link_to_route('pessoas.show',$pessoa->nome,$pessoa->id) !!}</td>
+			<td>{!! $pessoa->equipe->nome !!}</td>
 		</tr>
 	@endforeach
 </table>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use App\Http\Requests\EquipeRequest;
 use App\Equipe;
 
@@ -10,27 +10,76 @@ class EquipesController extends Controller
 {
     public function index()
     {
-    	return Equipe::all();
+    	$equipes = Equipe::all();
+        if (Request::wantsJson())
+        {
+            return $equipes;
+        }
+        else
+        {
+            return view('equipes.index',compact('equipes'));
+        }
+    }
+
+    public function create()
+    {
+        $equipe = new Equipe();
+        return view('equipes.create',compact('equipe'));
+    }
+
+    public function edit(Equipe $equipe)
+    {
+        return view('equipes.edit',compact('equipe'));
     }
 
     public function store(EquipeRequest $request)
     {
-    	return Equipe::create($request->all());
+        $equipe = Equipe::create($request->all());
+        if (Request::wantsJson())
+        {
+            return $equipe;
+        }
+        else
+        {
+            return redirect('equipes');
+        }
     }
 
     public function show(Equipe $equipe)
     {
-    	return $equipe;
+        if (Request::wantsJson())
+        {
+    	   return $equipe;
+        }
+        else
+        {
+            return view('equipes.show',compact('equipe'));
+        }
     }
 
     public function update(EquipeRequest $request, Equipe $equipe)
     {
     	$equipe->update($request->all());
-    	return $equipe;
+        if (Request::wantsJson())
+        {
+    	   return $equipe;
+        }
+        else
+        {
+            return redirect('equipes');
+        }
     }
 
     public function destroy(Equipe $equipe)
     {
-    	return (string) $equipe->delete();	
+        $deleted = (string) $equipe->delete();
+        if (Request::wantsJson())
+        {
+    	   return $deleted;	
+        }
+        else
+        {
+            return redirect('equipes');
+        }
     }
 }

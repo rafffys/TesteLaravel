@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Equipe;
 
 class Pessoa extends Model
 {
@@ -10,6 +11,6 @@ class Pessoa extends Model
 
   public function equipe()
   {
-  	return $this->belongsTo('App\Equipe');
+  	return $this->belongsTo('App\Equipe','idequipe');
   }
 }

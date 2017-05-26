@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Request;
 use App\Http\Requests\PessoaRequest;
 use App\Pessoa;
+use App\Equipe;
 
 class PessoasController extends Controller
 {
@@ -49,12 +50,14 @@ class PessoasController extends Controller
     public function create()
     {
     	$pessoa = new Pessoa();
-    	return view('pessoas.create',compact('pessoa'));
+        $equipes = Equipe::pluck('nome', 'id')->all();
+    	return view('pessoas.create',compact('pessoa','equipes'));
     }
 
     public function edit(Pessoa $pessoa)
     {
-    	return view('pessoas.edit',compact('pessoa'));
+        $equipes = Equipe::pluck('nome', 'id')->all();
+    	return view('pessoas.edit',compact('pessoa','equipes'));
     }
 
     public function update(PessoaRequest $request,Pessoa $pessoa)

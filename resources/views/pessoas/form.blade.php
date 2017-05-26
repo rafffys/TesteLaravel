@@ -10,4 +10,8 @@
 	{!! Form::label('telefone','Telefone:') !!}
 	{!! Form::text('telefone') !!}
 </div>
+<div>
+    {!! Form::label('idequipe', 'Equipe:') !!}
+    {!! Form::select('idequipe', $equipes, $pessoa->idequipe) !!}
+</div>
 {!! Form::submit($submitButtonText) !!}
