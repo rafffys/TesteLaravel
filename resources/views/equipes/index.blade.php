@@ -3,7 +3,7 @@
 @section('content')
 	@include('shared.alert')
 	<h1>Equipes</h1>
-	{!! link_to_route('equipes.create','Nova Equipe',null,['class'=>'btn btn-primary btn-lg']) !!}
+	{!! link_to_route('equipes.create','Nova Equipe',null,['class'=>'btn btn-primary btn-lg','data-remote'=>'true']) !!}
 	<table class='table'>
 		<tr>
 			<th>Edit</th>
