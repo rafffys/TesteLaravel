@@ -35,6 +35,8 @@ class EquipesController extends Controller
     public function store(EquipeRequest $request)
     {
         $equipe = Equipe::create($request->all());
+        session()->flash('flash_message','Equipe salva com sucesso!');
+
         if (Request::wantsJson())
         {
             return $equipe;
@@ -60,6 +62,8 @@ class EquipesController extends Controller
     public function update(EquipeRequest $request, Equipe $equipe)
     {
     	$equipe->update($request->all());
+        session()->flash('flash_message','Equipe salva com sucesso!');
+
         if (Request::wantsJson())
         {
     	   return $equipe;
@@ -73,6 +77,8 @@ class EquipesController extends Controller
     public function destroy(Equipe $equipe)
     {
         $deleted = (string) $equipe->delete();
+        session()->flash('flash_message','Equipe removida com sucesso!');
+
         if (Request::wantsJson())
         {
     	   return $deleted;	

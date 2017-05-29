@@ -1,6 +1,7 @@
 @extends($layout)
 
 @section('content')
+	@include('shared.alert')
 	<h1>Pessoas</h1>
 	{!! link_to_route('pessoas.create','Nova Pessoa',null,['class'=>'btn btn-primary btn-lg']) !!}
 	<table class='table'>

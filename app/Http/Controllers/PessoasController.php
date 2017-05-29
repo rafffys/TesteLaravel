@@ -25,6 +25,7 @@ class PessoasController extends Controller
     public function store(PessoaRequest $request)
     {
     	$pessoa = Pessoa::create($request->all());
+        session()->flash('flash_message','Pessoa salva com sucesso!');
     	if (Request::WantsJson())
     	{
     		return $pessoa;
@@ -63,6 +64,8 @@ class PessoasController extends Controller
     public function update(PessoaRequest $request,Pessoa $pessoa)
     {
     	$pessoa->update($request->all());
+        session()->flash('flash_message','Pessoa salva com sucesso!');
+
     	if (Request::WantsJson())
     	{
     		return $pessoa;
@@ -76,6 +79,8 @@ class PessoasController extends Controller
     public function destroy(Pessoa $pessoa)
     {
     	$deleted = (string) $pessoa->delete();
+        session()->flash('flash_message','Pessoa removida com sucesso!');
+        
     	if (Request::WantsJson())
     	{
     		return $deleted;
